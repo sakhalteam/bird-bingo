@@ -1,0 +1,2 @@
+id,name,male_img,female_img,female_is_distinct,voice,call,needs_male_img,needs_female_img,needs_voice,needs_call,notes
+,"",NO,NO,MONO,NO,NO,YES,N/A,YES,YES,"no male image path set; no voice path set; no call path set"
