@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import type { Bird, BirdSongVariant } from "./birds-data";
-import { birds } from "./birds-data";
+import { expansionBirds, primaryBirds } from "./birds-data";
 
 type SexFilter = "male" | "female";
 type Rect = { top: number; left: number; width: number; height: number };
@@ -14,14 +14,14 @@ function getBirdImage(bird: Bird, sex: SexFilter): string {
       bird.imageFemale ||
       bird.imageMale ||
       bird.image ||
-      "/bird-bingo/birds/img/placeholder.png"
+      "/birds/img/placeholder.png"
     );
   }
   return (
     bird.imageMale ||
     bird.image ||
     bird.imageFemale ||
-    "/bird-bingo/birds/img/placeholder.png"
+    "/birds/img/placeholder.png"
   );
 }
 
@@ -42,6 +42,10 @@ export default function BirdBingo() {
 
   // Optionally turn off voice before bird call
   const [playNameVoice, setPlayNameVoice] = useState(true);
+
+  // Accordion state
+  const [primaryOpen, setPrimaryOpen] = useState(true);
+  const [expansionOpen, setExpansionOpen] = useState(false);
 
   // Flying card state
   const [infoBird, setInfoBird] = useState<Bird | null>(null);
@@ -344,75 +348,116 @@ export default function BirdBingo() {
             </div>
           </div>
 
-          {/* Grid */}
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {birds.map((bird) => {
-              const imgSrc = getBirdImage(bird, sexFilter);
-              const isInfoActive = infoBird?.id === bird.id;
-
-              return (
-                <div
-                  key={bird.id}
-                  data-bird-card-wrapper
-                  style={{ visibility: isInfoActive ? "hidden" : "visible" }}
-                >
-                  <div
-                    data-bird-card
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => handleCardTap(bird)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        handleCardTap(bird);
-                      }
-                    }}
-                    className="relative group flex flex-col items-center cursor-pointer active:scale-[0.97]"
-                  >
-                    <div className="relative w-full max-w-[220px] mx-auto pt-[138%] rounded-[20px] border-[3px] border-[#F6C94B] bg-white shadow-md">
-                      <div className="absolute inset-[10px] rounded-[14px] overflow-hidden bg-white">
-                        <div className="relative w-full h-full flex flex-col items-center">
-                          {/* Liquid fill */}
-                          {currentBirdId === bird.id && isPlaying && (
-                            <div
-                              className="absolute inset-x-0 bottom-0 bg-yellow-400/30"
-                              style={{ height: `${playProgress * 100}%` }}
-                            />
-                          )}
-
-                          {showNerdMode &&
-                            (bird.info || bird.variants?.length) && (
-                              <button
-                                onClick={(e) => handleInfoClick(e, bird)}
-                                className="absolute top-2 right-2 h-6 w-6 bg-black/60 text-white rounded-full text-xs flex items-center justify-center"
-                              >
-                                i
-                              </button>
-                            )}
-
-                          <div className="w-full flex-1 flex items-center justify-center p-3">
-                            <img
-                              src={imgSrc}
-                              alt={bird.name}
-                              className="max-h-full max-w-full object-contain"
-                            />
+          {/* Bird grid renderer */}
+          {(() => {
+            const renderGrid = (birdList: Bird[]) => (
+              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                {birdList.map((bird) => {
+                  const imgSrc = getBirdImage(bird, sexFilter);
+                  const isInfoActive = infoBird?.id === bird.id;
+                  return (
+                    <div
+                      key={bird.id}
+                      data-bird-card-wrapper
+                      style={{ visibility: isInfoActive ? "hidden" : "visible" }}
+                    >
+                      <div
+                        data-bird-card
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => handleCardTap(bird)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            handleCardTap(bird);
+                          }
+                        }}
+                        className="relative group flex flex-col items-center cursor-pointer active:scale-[0.97]"
+                      >
+                        <div className="relative w-full max-w-[220px] mx-auto pt-[124%] rounded-[20px] border-[8px] border-[#9BBFCE] bg-white shadow-sm">
+                          <div className="absolute inset-[4px] rounded-[16px] overflow-hidden bg-white">
+                            <div className="relative w-full h-full flex flex-col items-center">
+                              {currentBirdId === bird.id && isPlaying && (
+                                <div
+                                  className="absolute inset-x-0 bottom-0 bg-yellow-400/30"
+                                  style={{ height: `${playProgress * 100}%` }}
+                                />
+                              )}
+                              {showNerdMode &&
+                                (bird.info || bird.variants?.length) && (
+                                  <button
+                                    onClick={(e) => handleInfoClick(e, bird)}
+                                    className="absolute top-2 right-2 h-6 w-6 bg-black/60 text-white rounded-full text-xs flex items-center justify-center"
+                                  >
+                                    i
+                                  </button>
+                                )}
+                              <div className="w-full flex-1 flex items-center justify-center px-3 pt-3 pb-1">
+                                <img
+                                  src={imgSrc}
+                                  alt={bird.name}
+                                  className="max-h-full max-w-full object-contain"
+                                />
+                              </div>
+                              <div className="px-5 pb-9 text-center text-[0.84rem] tracking-[0.22em] text-black font-medium leading-snug">
+                                {(() => {
+                                  const words = bird.name.toUpperCase().split(" ");
+                                  if (words.length === 2) return <>{words[0]}<br />{words[1]}</>;
+                                  return bird.name.toUpperCase();
+                                })()}
+                              </div>
+                            </div>
                           </div>
-
-                          <div className="pb-4 text-center text-[0.7rem] tracking-[0.25em] text-black/80 font-medium">
-                            {bird.name.toUpperCase()}
-                          </div>
+                        </div>
+                        <div className="mt-1 text-[0.65rem] text-[var(--muted)] uppercase">
+                          Tap to{" "}
+                          {currentBirdId === bird.id && isPlaying
+                            ? "stop"
+                            : "play"}
                         </div>
                       </div>
                     </div>
-                    <div className="mt-1 text-[0.65rem] text-[var(--muted)] uppercase">
-                      Tap to{" "}
-                      {currentBirdId === bird.id && isPlaying ? "stop" : "play"}
-                    </div>
-                  </div>
+                  );
+                })}
+              </div>
+            );
+
+            return (
+              <>
+                {/* Core Deck accordion */}
+                <div className="mt-6">
+                  <button
+                    onClick={() => setPrimaryOpen((v) => !v)}
+                    className="w-full flex items-center justify-between py-2 border-b border-[var(--border)]"
+                  >
+                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+                      Core Deck
+                    </span>
+                    <span className="text-[0.65rem] text-[var(--muted)]">
+                      {primaryOpen ? "▲" : "▼"}
+                    </span>
+                  </button>
+                  {primaryOpen && renderGrid(primaryBirds)}
                 </div>
-              );
-            })}
-          </div>
+
+                {/* Expansion accordion */}
+                <div className="mt-6">
+                  <button
+                    onClick={() => setExpansionOpen((v) => !v)}
+                    className="w-full flex items-center justify-between py-2 border-b border-[var(--border)]"
+                  >
+                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+                      Expansion
+                    </span>
+                    <span className="text-[0.65rem] text-[var(--muted)]">
+                      {expansionOpen ? "▲" : "▼"}
+                    </span>
+                  </button>
+                  {expansionOpen && renderGrid(expansionBirds)}
+                </div>
+              </>
+            );
+          })()}
 
           <audio ref={audioRef} />
         </section>
@@ -513,10 +558,10 @@ export default function BirdBingo() {
                     {/* Overview / basic description */}
                     {infoBird.info?.basicDescription && (
                       <div>
-                        <div className="uppercase text-xs tracking-[0.18em] font-semibold mb-1">
+                        <div className="uppercase text-xs tracking-[0.18em] font-bold text-black mb-1">
                           Overview
                         </div>
-                        <p className="text-sm text-neutral-700 leading-relaxed">
+                        <p className="text-sm text-neutral-900 leading-relaxed">
                           {infoBird.info.basicDescription}
                         </p>
                       </div>
@@ -528,7 +573,7 @@ export default function BirdBingo() {
                       infoBird.info?.behavior ||
                       infoBird.info?.conservation) && (
                       <div>
-                        <div className="uppercase text-xs tracking-[0.18em] font-semibold mb-2">
+                        <div className="uppercase text-xs tracking-[0.18em] font-bold text-black mb-2">
                           Life history
                         </div>
                         <div className="flex flex-wrap gap-2">
@@ -570,30 +615,30 @@ export default function BirdBingo() {
                     {/* Songs / calls / other sounds */}
                     {infoBird.info?.songs && (
                       <div>
-                        <div className="uppercase text-xs tracking-[0.18em] font-semibold mb-1">
+                        <div className="uppercase text-xs tracking-[0.18em] font-bold text-black mb-1">
                           Songs
                         </div>
-                        <p className="text-sm text-neutral-700 leading-relaxed">
+                        <p className="text-sm text-neutral-900 leading-relaxed">
                           {infoBird.info.songs}
                         </p>
                       </div>
                     )}
                     {infoBird.info?.calls && (
                       <div>
-                        <div className="uppercase text-xs tracking-[0.18em] font-semibold mb-1">
+                        <div className="uppercase text-xs tracking-[0.18em] font-bold text-black mb-1">
                           Calls
                         </div>
-                        <p className="text-sm text-neutral-700 leading-relaxed">
+                        <p className="text-sm text-neutral-900 leading-relaxed">
                           {infoBird.info.calls}
                         </p>
                       </div>
                     )}
                     {infoBird.info?.otherSounds && (
                       <div>
-                        <div className="uppercase text-xs tracking-[0.18em] font-semibold mb-1">
+                        <div className="uppercase text-xs tracking-[0.18em] font-bold text-black mb-1">
                           Other sounds
                         </div>
-                        <p className="text-sm text-neutral-700 leading-relaxed">
+                        <p className="text-sm text-neutral-900 leading-relaxed">
                           {infoBird.info.otherSounds}
                         </p>
                       </div>
@@ -601,7 +646,7 @@ export default function BirdBingo() {
                     {/* Variant buttons */}
                     {infoBird.variants?.length ? (
                       <div>
-                        <div className="uppercase text-xs tracking-[0.18em] font-semibold mb-2">
+                        <div className="uppercase text-xs tracking-[0.18em] font-bold text-black mb-2">
                           Songs / dialects
                         </div>
                         <div className="flex flex-wrap gap-2">
