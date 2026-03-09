@@ -755,6 +755,34 @@ export const primaryBirds: Bird[] = [
     variants: [],
   },
   {
+    id: "lesser-prairie-chicken",
+    name: "Lesser Prairie Chicken",
+    imageMale: "/bird-bingo/birds/img/lesser-prairie-chicken-male.png",
+    imageFemale: "/bird-bingo/birds/img/lesser-prairie-chicken-female.png",
+    image: "",
+    voice: "/bird-bingo/birds/audio/lesser-prairie-chicken-voice.mp3",
+    call: "/bird-bingo/birds/audio/lesser-prairie-chicken-call.mp3",
+    info: {
+      scientificName: "Tympanuchus pallidicinctus",
+      order: "Galliformes",
+      family: "Phasianidae",
+      groupName: "Grouse",
+      habitat: "Sand sagebrush and shinnery oak prairie",
+      food: "Seeds, insects, leaves, buds",
+      nesting: "Ground (scrape concealed in grass or shrubs)",
+      behavior: "Males boom and dance on leks",
+      conservation: "Threatened",
+      basicDescription:
+        "A smaller, paler cousin of the Greater Prairie Chicken found in the southern Great Plains, where sand sagebrush and shinnery oak prairies stretch across Kansas, Colorado, Oklahoma, New Mexico, and Texas. Males perform a booming courtship display on leks similar to their larger relative but with reddish-purple neck sacs instead of orange. Habitat loss from agriculture and energy development has made this one of the most imperiled birds in North America — it was listed as Threatened under the Endangered Species Act in 2014.",
+      songs:
+        "The male's booming is a series of low, bubbly notes produced by inflating reddish-purple air sacs on the neck — slightly higher-pitched and less resonant than the Greater Prairie Chicken's boom.",
+      calls:
+        "Clucking and cackling calls similar to the Greater Prairie Chicken but generally softer. Males give whining calls and foot-stamping displays during lek performances.",
+      sourceUrl: "https://www.allaboutbirds.org/guide/Lesser_Prairie-Chicken",
+    },
+    variants: [],
+  },
+  {
     id: "house-finch",
     name: "House Finch",
     imageMale: "/bird-bingo/birds/img/house-finch-male.png",
@@ -2352,13 +2380,13 @@ export const expansionBirds: Bird[] = [
     variants: [],
   },
   {
-    id: "kookaburra",
+    id: "laughing-kookaburra",
     name: "Laughing Kookaburra",
-    imageMale: "/bird-bingo/birds/img/kookaburra-male.png",
+    imageMale: "/bird-bingo/birds/img/laughing-kookaburra-male.png",
     imageFemale: "", // monomorphic
     image: "",
-    voice: "/bird-bingo/birds/audio/kookaburra-voice.mp3",
-    call: "/bird-bingo/birds/audio/kookaburra-call.mp3",
+    voice: "/bird-bingo/birds/audio/laughing-kookaburra-voice.mp3",
+    call: "/bird-bingo/birds/audio/laughing-kookaburra-call.mp3",
     info: {
       scientificName: "Dacelo novaeguineae",
       order: "Coraciiformes",
@@ -2632,15 +2660,15 @@ export const expansionBirds: Bird[] = [
     variants: [],
   },
   {
-    id: "macaw",
-    name: "Macaw",
-    imageMale: "/bird-bingo/birds/img/macaw-male.png",
+    id: "blue-and-yellow-macaw",
+    name: "Blue-and-yellow Macaw",
+    imageMale: "/bird-bingo/birds/img/blue-and-yellow-macaw-male.png",
     imageFemale: "", // monomorphic
     image: "",
-    voice: "/bird-bingo/birds/audio/macaw-voice.mp3",
-    call: "/bird-bingo/birds/audio/macaw-call.mp3",
+    voice: "/bird-bingo/birds/audio/blue-and-yellow-macaw-voice.mp3",
+    call: "/bird-bingo/birds/audio/blue-and-yellow-macaw-call.mp3",
     info: {
-      scientificName: "Ara sp.",
+      scientificName: "Ara ararauna",
       order: "Psittaciformes",
       family: "Psittacidae",
       groupName: "Parrots",
@@ -2688,13 +2716,13 @@ export const expansionBirds: Bird[] = [
     variants: [],
   },
   {
-    id: "secretary-bird",
-    name: "Secretary Bird",
-    imageMale: "/bird-bingo/birds/img/secretary-bird-male.png",
+    id: "secretarybird",
+    name: "Secretarybird",
+    imageMale: "/bird-bingo/birds/img/secretarybird-male.png",
     imageFemale: "", // monomorphic
     image: "",
-    voice: "/bird-bingo/birds/audio/secretary-bird-voice.mp3",
-    call: "/bird-bingo/birds/audio/secretary-bird-call.mp3",
+    voice: "/bird-bingo/birds/audio/secretarybird-voice.mp3",
+    call: "/bird-bingo/birds/audio/secretarybird-call.mp3",
     info: {
       scientificName: "Sagittarius serpentarius",
       order: "Accipitriformes",
@@ -2908,6 +2936,90 @@ export const expansionBirds: Bird[] = [
       calls:
         "A harsh 'ank-ank-ank' honking series in flight; a loud yelping display call.",
       sourceUrl: "https://ebird.org/species/whbsea2",
+    },
+    variants: [],
+  },
+  {
+    id: "white-bellied-bustard",
+    name: "White-bellied Bustard",
+    imageMale: "/bird-bingo/birds/img/white-bellied-bustard-male.png",
+    imageFemale: "/bird-bingo/birds/img/white-bellied-bustard-female.png",
+    image: "",
+    voice: "/bird-bingo/birds/audio/white-bellied-bustard-voice.mp3",
+    call: "/bird-bingo/birds/audio/white-bellied-bustard-call.mp3",
+    info: {
+      scientificName: "Eupodotis senegalensis",
+      order: "Otidiformes",
+      family: "Otididae",
+      groupName: "Bustards",
+      habitat: "Open grassland and savanna across sub-Saharan Africa",
+      food: "Insects, seeds, berries, and small vertebrates",
+      nesting: "Ground (bare scrape hidden in grass)",
+      behavior: "Males perform dramatic aerial displays, launching straight up then tumbling down",
+      conservation: "Least concern",
+      basicDescription:
+        "A striking African bustard with a blue-grey neck, black throat, and bright white belly. Males perform one of the most spectacular courtship displays of any bird — launching vertically into the air like a rocket, then tumbling and somersaulting back to earth. Despite being capable of flight, bustards spend most of their time walking through grasslands, hunting insects and small prey.",
+      songs:
+        "A repeated, far-carrying 'bark' or croaking call given from the ground or during display flights.",
+      calls:
+        "A loud, resonant 'kwark' alarm call; a rhythmic grunting during territorial encounters.",
+      sourceUrl: "https://ebird.org/species/whbbus1",
+    },
+    variants: [],
+  },
+  {
+    id: "tui",
+    name: "Tui",
+    imageMale: "/bird-bingo/birds/img/tui-male.png",
+    imageFemale: "", // monomorphic
+    image: "",
+    voice: "/bird-bingo/birds/audio/tui-voice.mp3",
+    call: "/bird-bingo/birds/audio/tui-call.mp3",
+    info: {
+      scientificName: "Prosthemadera novaeseelandiae",
+      order: "Passeriformes",
+      family: "Meliphagidae",
+      groupName: "Honeyeaters",
+      habitat: "Native forest, gardens, and parks across New Zealand",
+      food: "Nectar, fruit, and insects",
+      nesting: "Cup nest in dense vegetation",
+      behavior: "Aggressive nectar defenders; extraordinary vocal mimics with two voice boxes",
+      conservation: "Least concern",
+      basicDescription:
+        "A spectacular New Zealand honeyeater that appears jet-black until sunlight hits it, revealing an iridescent sheen of blue, green, and purple. The distinctive white throat tuft (poi) gives it a formal look. Tui are among the most accomplished vocalists in the bird world — they have two voice boxes and can produce sounds beyond human hearing, as well as mimicking other birds, phones, and human speech.",
+      songs:
+        "An astonishing repertoire of bell-like notes, clicks, coughs, wheezes, and melodic phrases — one of the most complex songs of any bird, often including ultrasonic frequencies humans cannot hear.",
+      calls:
+        "A loud, ringing 'tui-tui' contact call; aggressive chattering and wing-clapping when defending nectar sources.",
+      sourceUrl: "https://ebird.org/species/tui1",
+    },
+    variants: [],
+  },
+  {
+    id: "ibis",
+    name: "Australian White Ibis",
+    imageMale: "/bird-bingo/birds/img/ibis-male.png",
+    imageFemale: "", // monomorphic
+    image: "",
+    voice: "/bird-bingo/birds/audio/ibis-voice.mp3",
+    call: "/bird-bingo/birds/audio/ibis-call.mp3",
+    info: {
+      scientificName: "Threskiornis molucca",
+      order: "Pelecaniformes",
+      family: "Threskiornithidae",
+      groupName: "Ibises",
+      habitat: "Wetlands, parks, and urban areas across Australia",
+      food: "Insects, crustaceans, scraps — famously opportunistic",
+      nesting: "Stick platform in trees or reeds, often in large colonies",
+      behavior: "Notorious urban scavengers; affectionately known as 'bin chickens'",
+      conservation: "Least concern",
+      basicDescription:
+        "Affectionately (and not-so-affectionately) known as the 'bin chicken' across Australia, this large white ibis with a bald black head and curved bill has become one of the most successful urban adapters in the bird world. Originally a wetland bird, habitat loss pushed it into cities where it discovered an endless buffet of human food scraps. Love them or hate them, they are survivors.",
+      songs:
+        "A harsh, grating croak — not winning any beauty contests in the vocal department.",
+      calls:
+        "Loud, nasal croaking and grunting, especially in breeding colonies; a sharp alarm bark.",
+      sourceUrl: "https://ebird.org/species/auwibe1",
     },
     variants: [],
   },

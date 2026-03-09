@@ -11,6 +11,18 @@ function HomeBtn() {
   );
 }
 
+function ScrollToTop() {
+  return (
+    <button
+      className="scroll-top-btn"
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Back to top"
+    >
+      &uarr; Top
+    </button>
+  );
+}
+
 export default function App() {
   return (
     <>
@@ -19,6 +31,7 @@ export default function App() {
       <div className="wrap">
         <BirdBingo />
       </div>
+      <ScrollToTop />
     </>
   );
 }

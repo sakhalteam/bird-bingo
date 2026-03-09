@@ -147,3 +147,29 @@ html, body { overflow-x: hidden; }
   color: var(--text);
   border-color: rgba(255, 255, 255, 0.2);
 }
+
+/* Scroll to top button — fixed bottom-right */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 50;
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  opacity: 0.55;
+  backdrop-filter: blur(6px);
+  font-family: inherit;
+  transition: opacity 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.scroll-top-btn:hover {
+  opacity: 1;
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.2);
+}
