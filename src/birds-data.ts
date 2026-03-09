@@ -2464,13 +2464,13 @@ export const expansionBirds: Bird[] = [
     variants: [],
   },
   {
-    id: "kiwi",
+    id: "north-island-brown-kiwi",
     name: "North Island Brown Kiwi",
-    imageMale: "/bird-bingo/birds/img/kiwi-male.png",
+    imageMale: "/bird-bingo/birds/img/north-island-brown-kiwi-male.png",
     imageFemale: "", // monomorphic
     image: "",
-    voice: "/bird-bingo/birds/audio/kiwi-voice.mp3",
-    call: "/bird-bingo/birds/audio/kiwi-call.mp3",
+    voice: "/bird-bingo/birds/audio/north-island-brown-kiwi-voice.mp3",
+    call: "/bird-bingo/birds/audio/north-island-brown-kiwi-call.mp3",
     info: {
       scientificName: "Apteryx mantelli",
       order: "Apterygiformes",
