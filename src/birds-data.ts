@@ -1933,7 +1933,7 @@ export const expansionBirds: Bird[] = [
   },
   {
     id: "european-nightingale",
-    name: "Common Nightingale",
+    name: "European Nightingale",
     imageMale: "/bird-bingo/birds/img/european-nightingale-male.png",
     imageFemale: "", // monomorphic
     image: "",
@@ -2996,13 +2996,13 @@ export const expansionBirds: Bird[] = [
     variants: [],
   },
   {
-    id: "ibis",
+    id: "australian-white-ibis",
     name: "Australian White Ibis",
-    imageMale: "/bird-bingo/birds/img/ibis-male.png",
+    imageMale: "/bird-bingo/birds/img/australian-white-ibis-male.png",
     imageFemale: "", // monomorphic
     image: "",
-    voice: "/bird-bingo/birds/audio/ibis-voice.mp3",
-    call: "/bird-bingo/birds/audio/ibis-call.mp3",
+    voice: "/bird-bingo/birds/audio/australian-white-ibis-voice.mp3",
+    call: "/bird-bingo/birds/audio/australian-white-ibis-call.mp3",
     info: {
       scientificName: "Threskiornis molucca",
       order: "Pelecaniformes",
