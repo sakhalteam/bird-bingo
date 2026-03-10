@@ -1736,6 +1736,34 @@ export const expansionBirds: Bird[] = [
     variants: [],
   },
   {
+    id: "australian-white-ibis",
+    name: "Australian White Ibis",
+    imageMale: "/bird-bingo/birds/img/australian-white-ibis-male.png",
+    imageFemale: "", // monomorphic
+    image: "",
+    voice: "/bird-bingo/birds/audio/australian-white-ibis-voice.mp3",
+    call: "/bird-bingo/birds/audio/australian-white-ibis-call.mp3",
+    info: {
+      scientificName: "Threskiornis molucca",
+      order: "Pelecaniformes",
+      family: "Threskiornithidae",
+      groupName: "Ibises",
+      habitat: "Wetlands, parks, and urban areas across Australia",
+      food: "Insects, crustaceans, scraps — famously opportunistic",
+      nesting: "Stick platform in trees or reeds, often in large colonies",
+      behavior: "Notorious urban scavengers; affectionately known as 'bin chickens'",
+      conservation: "Least concern",
+      basicDescription:
+        "Affectionately (and not-so-affectionately) known as the 'bin chicken' across Australia, this large white ibis with a bald black head and curved bill has become one of the most successful urban adapters in the bird world. Originally a wetland bird, habitat loss pushed it into cities where it discovered an endless buffet of human food scraps. Love them or hate them, they are survivors.",
+      songs:
+        "A harsh, grating croak — not winning any beauty contests in the vocal department.",
+      calls:
+        "Loud, nasal croaking and grunting, especially in breeding colonies; a sharp alarm bark.",
+      sourceUrl: "https://ebird.org/species/auwibe1",
+    },
+    variants: [],
+  },
+  {
     id: "barn-owl",
     name: "Barn Owl",
     imageMale: "/bird-bingo/birds/img/barn-owl-male.png",
@@ -1792,30 +1820,30 @@ export const expansionBirds: Bird[] = [
     variants: [],
   },
   {
-    id: "blyths-kingfisher",
-    name: "Blyth's Kingfisher",
-    imageMale: "/bird-bingo/birds/img/blyths-kingfisher-male.png",
+    id: "blue-and-yellow-macaw",
+    name: "Blue-and-yellow Macaw",
+    imageMale: "/bird-bingo/birds/img/blue-and-yellow-macaw-male.png",
     imageFemale: "", // monomorphic
     image: "",
-    voice: "/bird-bingo/birds/audio/blyths-kingfisher-voice.mp3",
-    call: "/bird-bingo/birds/audio/blyths-kingfisher-call.mp3",
+    voice: "/bird-bingo/birds/audio/blue-and-yellow-macaw-voice.mp3",
+    call: "/bird-bingo/birds/audio/blue-and-yellow-macaw-call.mp3",
     info: {
-      scientificName: "Alcedo hercules",
-      order: "Coraciiformes",
-      family: "Alcedinidae",
-      groupName: "Kingfishers",
-      habitat: "Fast mountain streams and rivers in Southeast Asia",
-      food: "Fish, crabs, and aquatic insects",
-      nesting: "Tunnel excavated in riverbank",
-      behavior: "Perches low over rushing water; plunges headfirst for fish",
-      conservation: "Least concern",
+      scientificName: "Ara ararauna",
+      order: "Psittaciformes",
+      family: "Psittacidae",
+      groupName: "Parrots",
+      habitat: "Tropical rainforest and woodland in Central and South America",
+      food: "Seeds, nuts, fruit, and clay (to neutralize toxins in food)",
+      nesting: "Tree hollow or cliff crevice",
+      behavior: "Pairs bond for life; gather at clay licks to eat mineral-rich soil",
+      conservation: "Varies by species",
       basicDescription:
-        "The largest of the classic 'river kingfisher' group, found along mountain streams from northeastern India to southern China. Its electric blue back and rich orange underparts make it look like a regular kingfisher with the colors turned up to maximum — essentially a jewel that zips along jungle rivers.",
+        "The largest parrots on Earth, with powerful hooked bills that can crack open Brazil nuts and voices that carry for miles. Macaws mate for life and are rarely seen without their partner. One of their strangest habits is visiting clay licks — riverbank exposures of mineral-rich soil — where hundreds gather to eat the clay, which neutralizes toxins in the seeds they eat.",
       songs:
-        "A loud, penetrating whistle or 'peep' repeated in rapid series, often heard as the bird arrows along the waterway.",
+        "Loud, raucous screeching and squawking that echoes through the forest canopy — not melodious, but utterly unmistakable.",
       calls:
-        "A sharp, high-pitched 'tseet' alarm call; also a rattling chatter near the nest burrow.",
-      sourceUrl: "https://ebird.org/species/blykin1",
+        "Harsh, grinding screeches and rolling caws; soft chattering and mutual preening between bonded pairs.",
+      sourceUrl: "https://ebird.org/species/y00678",
     },
     variants: [],
   },
@@ -1844,6 +1872,34 @@ export const expansionBirds: Bird[] = [
       calls:
         "Shrill whistles and honking calls in the nesting colony; young birds make loud, insistent begging cries.",
       sourceUrl: "https://www.allaboutbirds.org/guide/Blue-footed_Booby",
+    },
+    variants: [],
+  },
+  {
+    id: "blyths-kingfisher",
+    name: "Blyth's Kingfisher",
+    imageMale: "/bird-bingo/birds/img/blyths-kingfisher-male.png",
+    imageFemale: "", // monomorphic
+    image: "",
+    voice: "/bird-bingo/birds/audio/blyths-kingfisher-voice.mp3",
+    call: "/bird-bingo/birds/audio/blyths-kingfisher-call.mp3",
+    info: {
+      scientificName: "Alcedo hercules",
+      order: "Coraciiformes",
+      family: "Alcedinidae",
+      groupName: "Kingfishers",
+      habitat: "Fast mountain streams and rivers in Southeast Asia",
+      food: "Fish, crabs, and aquatic insects",
+      nesting: "Tunnel excavated in riverbank",
+      behavior: "Perches low over rushing water; plunges headfirst for fish",
+      conservation: "Least concern",
+      basicDescription:
+        "The largest of the classic 'river kingfisher' group, found along mountain streams from northeastern India to southern China. Its electric blue back and rich orange underparts make it look like a regular kingfisher with the colors turned up to maximum — essentially a jewel that zips along jungle rivers.",
+      songs:
+        "A loud, penetrating whistle or 'peep' repeated in rapid series, often heard as the bird arrows along the waterway.",
+      calls:
+        "A sharp, high-pitched 'tseet' alarm call; also a rattling chatter near the nest burrow.",
+      sourceUrl: "https://ebird.org/species/blykin1",
     },
     variants: [],
   },
@@ -1928,34 +1984,6 @@ export const expansionBirds: Bird[] = [
       calls:
         "The female gives a beautiful, bubbling liquid trill that sounds nothing like the famous 'cuck-oo'; both sexes make a soft 'kwow' when flushed.",
       sourceUrl: "https://ebird.org/species/comcuc1",
-    },
-    variants: [],
-  },
-  {
-    id: "european-nightingale",
-    name: "European Nightingale",
-    imageMale: "/bird-bingo/birds/img/european-nightingale-male.png",
-    imageFemale: "", // monomorphic
-    image: "",
-    voice: "/bird-bingo/birds/audio/european-nightingale-voice.mp3",
-    call: "/bird-bingo/birds/audio/european-nightingale-call.mp3",
-    info: {
-      scientificName: "Luscinia megarhynchos",
-      order: "Passeriformes",
-      family: "Muscicapidae",
-      groupName: "Old World Flycatchers",
-      habitat: "Dense thickets, hedgerows, and woodland edges",
-      food: "Insects, worms, and berries",
-      nesting: "Cup nest hidden low in dense vegetation",
-      behavior: "Sings by day and night; notoriously hard to see",
-      conservation: "Least concern",
-      basicDescription:
-        "Arguably the most celebrated songbird in all of human history — praised by poets, composers, and naturalists for thousands of years. The joke is that despite all this fame, the nightingale is a small, entirely plain brown bird. It makes up for its looks in pure vocal power: a rich, complex cascade of phrases that it delivers with startling loudness, day and night, for weeks on end.",
-      songs:
-        "An extraordinary mix of long liquid whistles, rapid trills, crescendos, and sudden loud bursts — males improvise continuously, night and day, in a performance no other songbird can match for sheer range and intensity.",
-      calls:
-        "A throaty 'hweet' contact call; a sharp repeated 'tac-tac' alarm note; a frog-like low churring.",
-      sourceUrl: "https://ebird.org/species/comnig1",
     },
     variants: [],
   },
@@ -2152,6 +2180,34 @@ export const expansionBirds: Bird[] = [
       calls:
         "A liquid, rolling 'chirrip' contact call in flight; a short, dry 'trrr' alarm.",
       sourceUrl: "https://ebird.org/species/euasla1",
+    },
+    variants: [],
+  },
+  {
+    id: "european-nightingale",
+    name: "European Nightingale",
+    imageMale: "/bird-bingo/birds/img/european-nightingale-male.png",
+    imageFemale: "", // monomorphic
+    image: "",
+    voice: "/bird-bingo/birds/audio/european-nightingale-voice.mp3",
+    call: "/bird-bingo/birds/audio/european-nightingale-call.mp3",
+    info: {
+      scientificName: "Luscinia megarhynchos",
+      order: "Passeriformes",
+      family: "Muscicapidae",
+      groupName: "Old World Flycatchers",
+      habitat: "Dense thickets, hedgerows, and woodland edges",
+      food: "Insects, worms, and berries",
+      nesting: "Cup nest hidden low in dense vegetation",
+      behavior: "Sings by day and night; notoriously hard to see",
+      conservation: "Least concern",
+      basicDescription:
+        "Arguably the most celebrated songbird in all of human history — praised by poets, composers, and naturalists for thousands of years. The joke is that despite all this fame, the nightingale is a small, entirely plain brown bird. It makes up for its looks in pure vocal power: a rich, complex cascade of phrases that it delivers with startling loudness, day and night, for weeks on end.",
+      songs:
+        "An extraordinary mix of long liquid whistles, rapid trills, crescendos, and sudden loud bursts — males improvise continuously, night and day, in a performance no other songbird can match for sheer range and intensity.",
+      calls:
+        "A throaty 'hweet' contact call; a sharp repeated 'tac-tac' alarm note; a frog-like low churring.",
+      sourceUrl: "https://ebird.org/species/comnig1",
     },
     variants: [],
   },
@@ -2660,34 +2716,6 @@ export const expansionBirds: Bird[] = [
     variants: [],
   },
   {
-    id: "blue-and-yellow-macaw",
-    name: "Blue-and-yellow Macaw",
-    imageMale: "/bird-bingo/birds/img/blue-and-yellow-macaw-male.png",
-    imageFemale: "", // monomorphic
-    image: "",
-    voice: "/bird-bingo/birds/audio/blue-and-yellow-macaw-voice.mp3",
-    call: "/bird-bingo/birds/audio/blue-and-yellow-macaw-call.mp3",
-    info: {
-      scientificName: "Ara ararauna",
-      order: "Psittaciformes",
-      family: "Psittacidae",
-      groupName: "Parrots",
-      habitat: "Tropical rainforest and woodland in Central and South America",
-      food: "Seeds, nuts, fruit, and clay (to neutralize toxins in food)",
-      nesting: "Tree hollow or cliff crevice",
-      behavior: "Pairs bond for life; gather at clay licks to eat mineral-rich soil",
-      conservation: "Varies by species",
-      basicDescription:
-        "The largest parrots on Earth, with powerful hooked bills that can crack open Brazil nuts and voices that carry for miles. Macaws mate for life and are rarely seen without their partner. One of their strangest habits is visiting clay licks — riverbank exposures of mineral-rich soil — where hundreds gather to eat the clay, which neutralizes toxins in the seeds they eat.",
-      songs:
-        "Loud, raucous screeching and squawking that echoes through the forest canopy — not melodious, but utterly unmistakable.",
-      calls:
-        "Harsh, grinding screeches and rolling caws; soft chattering and mutual preening between bonded pairs.",
-      sourceUrl: "https://ebird.org/species/y00678",
-    },
-    variants: [],
-  },
-  {
     id: "scarlet-macaw",
     name: "Scarlet Macaw",
     imageMale: "/bird-bingo/birds/img/scarlet-macaw-male.png",
@@ -2884,6 +2912,34 @@ export const expansionBirds: Bird[] = [
     variants: [],
   },
   {
+    id: "tui",
+    name: "Tui",
+    imageMale: "/bird-bingo/birds/img/tui-male.png",
+    imageFemale: "", // monomorphic
+    image: "",
+    voice: "/bird-bingo/birds/audio/tui-voice.mp3",
+    call: "/bird-bingo/birds/audio/tui-call.mp3",
+    info: {
+      scientificName: "Prosthemadera novaeseelandiae",
+      order: "Passeriformes",
+      family: "Meliphagidae",
+      groupName: "Honeyeaters",
+      habitat: "Native forest, gardens, and parks across New Zealand",
+      food: "Nectar, fruit, and insects",
+      nesting: "Cup nest in dense vegetation",
+      behavior: "Aggressive nectar defenders; extraordinary vocal mimics with two voice boxes",
+      conservation: "Least concern",
+      basicDescription:
+        "A spectacular New Zealand honeyeater that appears jet-black until sunlight hits it, revealing an iridescent sheen of blue, green, and purple. The distinctive white throat tuft (poi) gives it a formal look. Tui are among the most accomplished vocalists in the bird world — they have two voice boxes and can produce sounds beyond human hearing, as well as mimicking other birds, phones, and human speech.",
+      songs:
+        "An astonishing repertoire of bell-like notes, clicks, coughs, wheezes, and melodic phrases — one of the most complex songs of any bird, often including ultrasonic frequencies humans cannot hear.",
+      calls:
+        "A loud, ringing 'tui-tui' contact call; aggressive chattering and wing-clapping when defending nectar sources.",
+      sourceUrl: "https://ebird.org/species/tui1",
+    },
+    variants: [],
+  },
+  {
     id: "victoria-crowned-pigeon",
     name: "Victoria Crowned Pigeon",
     imageMale: "/bird-bingo/birds/img/victoria-crowned-pigeon-male.png",
@@ -2908,34 +2964,6 @@ export const expansionBirds: Bird[] = [
       calls:
         "A loud 'whomp' alarm call; wing-clapping on takeoff.",
       sourceUrl: "https://ebird.org/species/vicrpi1",
-    },
-    variants: [],
-  },
-  {
-    id: "white-bellied-sea-eagle",
-    name: "White-bellied Sea Eagle",
-    imageMale: "/bird-bingo/birds/img/white-bellied-sea-eagle-male.png",
-    imageFemale: "", // monomorphic
-    image: "",
-    voice: "/bird-bingo/birds/audio/white-bellied-sea-eagle-voice.mp3",
-    call: "/bird-bingo/birds/audio/white-bellied-sea-eagle-call.mp3",
-    info: {
-      scientificName: "Icthyophaga leucogaster",
-      order: "Accipitriformes",
-      family: "Accipitridae",
-      groupName: "Eagles",
-      habitat: "Coastlines, large rivers, and lakes from India to Australia",
-      food: "Fish, sea snakes, and waterbirds",
-      nesting: "Massive stick nest reused for decades in a tall tree near water",
-      behavior: "Pairs soar together; same nest added to and returned to every year",
-      conservation: "Least concern",
-      basicDescription:
-        "One of the largest raptors in Australia and Southeast Asia — a striking bird of coasts and large waterways with a pure white head and belly contrasting sharply with slate-gray wings. Pairs mate for life and return to the same enormous nest year after year, adding sticks each season until the nest can grow large enough to swallow a small car.",
-      songs:
-        "A loud, repeated honking or yelping — goose-like and surprisingly nasal for such a large, powerful eagle. Pairs often call together in a ringing duet from their nest tree.",
-      calls:
-        "A harsh 'ank-ank-ank' honking series in flight; a loud yelping display call.",
-      sourceUrl: "https://ebird.org/species/whbsea2",
     },
     variants: [],
   },
@@ -2968,58 +2996,30 @@ export const expansionBirds: Bird[] = [
     variants: [],
   },
   {
-    id: "tui",
-    name: "Tui",
-    imageMale: "/bird-bingo/birds/img/tui-male.png",
+    id: "white-bellied-sea-eagle",
+    name: "White-bellied Sea Eagle",
+    imageMale: "/bird-bingo/birds/img/white-bellied-sea-eagle-male.png",
     imageFemale: "", // monomorphic
     image: "",
-    voice: "/bird-bingo/birds/audio/tui-voice.mp3",
-    call: "/bird-bingo/birds/audio/tui-call.mp3",
+    voice: "/bird-bingo/birds/audio/white-bellied-sea-eagle-voice.mp3",
+    call: "/bird-bingo/birds/audio/white-bellied-sea-eagle-call.mp3",
     info: {
-      scientificName: "Prosthemadera novaeseelandiae",
-      order: "Passeriformes",
-      family: "Meliphagidae",
-      groupName: "Honeyeaters",
-      habitat: "Native forest, gardens, and parks across New Zealand",
-      food: "Nectar, fruit, and insects",
-      nesting: "Cup nest in dense vegetation",
-      behavior: "Aggressive nectar defenders; extraordinary vocal mimics with two voice boxes",
+      scientificName: "Icthyophaga leucogaster",
+      order: "Accipitriformes",
+      family: "Accipitridae",
+      groupName: "Eagles",
+      habitat: "Coastlines, large rivers, and lakes from India to Australia",
+      food: "Fish, sea snakes, and waterbirds",
+      nesting: "Massive stick nest reused for decades in a tall tree near water",
+      behavior: "Pairs soar together; same nest added to and returned to every year",
       conservation: "Least concern",
       basicDescription:
-        "A spectacular New Zealand honeyeater that appears jet-black until sunlight hits it, revealing an iridescent sheen of blue, green, and purple. The distinctive white throat tuft (poi) gives it a formal look. Tui are among the most accomplished vocalists in the bird world — they have two voice boxes and can produce sounds beyond human hearing, as well as mimicking other birds, phones, and human speech.",
+        "One of the largest raptors in Australia and Southeast Asia — a striking bird of coasts and large waterways with a pure white head and belly contrasting sharply with slate-gray wings. Pairs mate for life and return to the same enormous nest year after year, adding sticks each season until the nest can grow large enough to swallow a small car.",
       songs:
-        "An astonishing repertoire of bell-like notes, clicks, coughs, wheezes, and melodic phrases — one of the most complex songs of any bird, often including ultrasonic frequencies humans cannot hear.",
+        "A loud, repeated honking or yelping — goose-like and surprisingly nasal for such a large, powerful eagle. Pairs often call together in a ringing duet from their nest tree.",
       calls:
-        "A loud, ringing 'tui-tui' contact call; aggressive chattering and wing-clapping when defending nectar sources.",
-      sourceUrl: "https://ebird.org/species/tui1",
-    },
-    variants: [],
-  },
-  {
-    id: "australian-white-ibis",
-    name: "Australian White Ibis",
-    imageMale: "/bird-bingo/birds/img/australian-white-ibis-male.png",
-    imageFemale: "", // monomorphic
-    image: "",
-    voice: "/bird-bingo/birds/audio/australian-white-ibis-voice.mp3",
-    call: "/bird-bingo/birds/audio/australian-white-ibis-call.mp3",
-    info: {
-      scientificName: "Threskiornis molucca",
-      order: "Pelecaniformes",
-      family: "Threskiornithidae",
-      groupName: "Ibises",
-      habitat: "Wetlands, parks, and urban areas across Australia",
-      food: "Insects, crustaceans, scraps — famously opportunistic",
-      nesting: "Stick platform in trees or reeds, often in large colonies",
-      behavior: "Notorious urban scavengers; affectionately known as 'bin chickens'",
-      conservation: "Least concern",
-      basicDescription:
-        "Affectionately (and not-so-affectionately) known as the 'bin chicken' across Australia, this large white ibis with a bald black head and curved bill has become one of the most successful urban adapters in the bird world. Originally a wetland bird, habitat loss pushed it into cities where it discovered an endless buffet of human food scraps. Love them or hate them, they are survivors.",
-      songs:
-        "A harsh, grating croak — not winning any beauty contests in the vocal department.",
-      calls:
-        "Loud, nasal croaking and grunting, especially in breeding colonies; a sharp alarm bark.",
-      sourceUrl: "https://ebird.org/species/auwibe1",
+        "A harsh 'ank-ank-ank' honking series in flight; a loud yelping display call.",
+      sourceUrl: "https://ebird.org/species/whbsea2",
     },
     variants: [],
   },
