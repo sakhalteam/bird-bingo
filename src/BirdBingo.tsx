@@ -41,7 +41,13 @@ export default function BirdBingo() {
   const [isFlipped, setIsFlipped] = useState(false);
 
   // Optionally turn off voice before bird call
-  const [playNameVoice, setPlayNameVoice] = useState(true);
+  const [playNameVoice, setPlayNameVoice] = useState(false);
+
+  // Loop bird call repeatedly
+  const [loopCall, setLoopCall] = useState(false);
+  const loopCallRef = useRef(false);
+
+  useEffect(() => { loopCallRef.current = loopCall; }, [loopCall]);
 
   // Accordion state
   const [primaryOpen, setPrimaryOpen] = useState(true);
@@ -70,6 +76,12 @@ export default function BirdBingo() {
       queueRef.current.shift();
 
       if (!queueRef.current?.length) {
+        // If looping, replay the last audio (the call)
+        if (loopCallRef.current) {
+          audio.currentTime = 0;
+          audio.play().catch(() => {});
+          return;
+        }
         queueRef.current = null;
         setCurrentBirdId(null);
         setIsPlaying(false);
@@ -311,6 +323,16 @@ export default function BirdBingo() {
                   </button>
                 </div>
               </div>
+
+              <label className="inline-flex items-center gap-2 select-none">
+                <span>Loop</span>
+                <input
+                  type="checkbox"
+                  className="accent-lime-500"
+                  checked={loopCall}
+                  onChange={(e) => setLoopCall(e.target.checked)}
+                />
+              </label>
 
               <label className="inline-flex items-center gap-2 select-none">
                 <span>Voice</span>
