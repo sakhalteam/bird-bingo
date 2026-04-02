@@ -6,7 +6,7 @@
 An interactive bird bingo game with real bird calls from Sibley's guide. Tap a bird card to hear its call (with optional voice intro), see detailed Cornell Lab-style info (habitat, diet, nesting, behavior, conservation, song variants). Educational and playful.
 
 ## Stack
-- Vite + React 18 + TypeScript + Tailwind v3
+- Vite + React 19 + TypeScript + Tailwind v4 (via `@tailwindcss/vite` plugin, NOT PostCSS)
 - `base: '/bird-bingo/'` in vite.config.ts
 - Deployed to sakhalteam.github.io/bird-bingo/
 

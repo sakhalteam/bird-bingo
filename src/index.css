@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --shadow-card: 0 10px 30px rgba(2, 6, 23, 0.12);
+}
 
 /* =======================================
    Theme tokens (dark & light aware)
