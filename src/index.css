@@ -175,3 +175,124 @@ html, body { overflow-x: hidden; }
   color: var(--text);
   border-color: rgba(255, 255, 255, 0.2);
 }
+
+/* =========================================
+   Alphabet index rail (iOS section index)
+   ========================================= */
+
+:root {
+  --alpha-rail-bg: rgba(0, 0, 0, 0.3);
+  --alpha-accent: #a7f3d0;
+  --alpha-glow: rgba(52, 211, 153, 0.7);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* A dark slab this tall is far too heavy over the light gradient. */
+    --alpha-rail-bg: rgba(255, 255, 255, 0.6);
+    --alpha-accent: #047857;
+    --alpha-glow: rgba(4, 120, 87, 0.45);
+  }
+}
+
+.alpha-rail {
+  position: fixed;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  height: min(70vh, 380px);
+  padding: 6px 2px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: var(--alpha-rail-bg);
+  backdrop-filter: blur(6px);
+  /* Stops the page scrolling out from under the thumb mid-drag. */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.alpha-letter {
+  flex: 1 1 0;
+  min-height: 0;
+  padding: 0 7px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: color 0.15s, opacity 0.15s, transform 0.15s;
+}
+
+.alpha-letter-active {
+  color: var(--alpha-accent);
+  opacity: 1;
+  transform: scale(1.45);
+  text-shadow: 0 0 10px var(--alpha-glow);
+}
+
+/* Sibling of the rail, never a child — a backdrop-filter ancestor would
+   trap this position:fixed inside the rail's box. */
+.alpha-bubble {
+  position: fixed;
+  right: 44px;
+  z-index: 41;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(10, 12, 18, 0.82);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 26px rgba(52, 211, 153, 0.35), 0 10px 30px rgba(2, 6, 23, 0.5);
+  color: #a7f3d0;
+  /* Deliberately dark in both themes — it reads as a HUD, like iOS's. */
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+
+/* The card a letter jump lands on, so you can see where you arrived. */
+@keyframes alpha-land {
+  0%   { box-shadow: 0 0 0 0 var(--alpha-glow); }
+  100% { box-shadow: 0 0 0 14px rgba(52, 211, 153, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alpha-landed > div > div:first-child { animation: none; }
+  .alpha-letter { transition: none; }
+}
+
+.alpha-landed > div > div:first-child {
+  animation: alpha-land 0.6s ease-out;
+  border-radius: 20px;
+}
+
+/* Headroom so a jumped-to card doesn't sit flush against the top edge. */
+[data-bird-card-wrapper][id] {
+  scroll-margin-top: 76px;
+}
+
+/* Mobile only. Done here rather than with `md:hidden`, which loses to these
+   rules' `display` on equal specificity since this file follows Tailwind. */
+@media (min-width: 768px) {
+  .alpha-rail,
+  .alpha-bubble {
+    display: none;
+  }
+}

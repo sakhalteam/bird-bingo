@@ -15,7 +15,13 @@ function ScrollToTop() {
   return (
     <button
       className="scroll-top-btn"
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      onClick={() => {
+        // Content scrolls inside <body> (html/body are height:100%), so
+        // window.scrollTo alone does nothing. The other call is a no-op.
+        const opts: ScrollToOptions = { top: 0, behavior: 'smooth' };
+        window.scrollTo(opts);
+        document.body.scrollTo(opts);
+      }}
       aria-label="Back to top"
     >
       &uarr; Top

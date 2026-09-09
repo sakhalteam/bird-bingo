@@ -1,8 +1,9 @@
 // src/BirdBingo.tsx
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Bird, BirdSongVariant } from "./birds-data";
 import { expansionBirds, primaryBirds } from "./birds-data";
+import AlphabetIndex from "./AlphabetIndex";
 
 type SexFilter = "male" | "female";
 type Rect = { top: number; left: number; width: number; height: number };
@@ -23,6 +24,17 @@ function getBirdImage(bird: Bird, sex: SexFilter): string {
     bird.imageFemale ||
     "/birds/img/placeholder.png"
   );
+}
+
+// Letter -> id of the first card filed under it. Both decks are already
+// alphabetized, so first-seen is the section start.
+function letterAnchors(birdList: Bird[], deck: string) {
+  const map = new Map<string, string>();
+  for (const bird of birdList) {
+    const letter = bird.name[0].toUpperCase();
+    if (!map.has(letter)) map.set(letter, `bird-letter-${deck}-${letter}`);
+  }
+  return map;
 }
 
 export default function BirdBingo() {
@@ -274,6 +286,99 @@ export default function BirdBingo() {
     return () => window.removeEventListener("keydown", onKey);
   }, [infoBird, closeInfo]);
 
+  // ---- Alphabet index ----
+  const primaryAnchors = useMemo(() => letterAnchors(primaryBirds, "primary"), []);
+  const expansionAnchors = useMemo(
+    () => letterAnchors(expansionBirds, "expansion"),
+    []
+  );
+
+  const indexLetters = useMemo(
+    () =>
+      [...new Set([...primaryAnchors.keys(), ...expansionAnchors.keys()])].sort(),
+    [primaryAnchors, expansionAnchors]
+  );
+
+  const [activeLetter, setActiveLetter] = useState<string | null>(null);
+  // A letter that only lives in a collapsed deck: open the deck, jump next render.
+  const [pendingJump, setPendingJump] = useState<{
+    id: string;
+    instant: boolean;
+  } | null>(null);
+
+  const jumpToId = useCallback((id: string, instant: boolean) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    // scrollIntoView locates the real scroll container. That matters here:
+    // html/body are height:100%, so the page scrolls inside <body> and
+    // window.scrollTo would be a no-op. Headroom comes from scroll-margin-top.
+    el.scrollIntoView({
+      block: "start",
+      // Smooth scrolling fights itself while a thumb is dragging the rail.
+      behavior: instant ? "instant" : "smooth",
+    });
+
+    document
+      .querySelectorAll(".alpha-landed")
+      .forEach((n) => n.classList.remove("alpha-landed"));
+    void el.offsetWidth; // reflow so the landing pulse restarts
+    el.classList.add("alpha-landed");
+  }, []);
+
+  const handleLetterSelect = useCallback(
+    (letter: string, instant: boolean) => {
+      const primaryId = primaryAnchors.get(letter);
+      const expansionId = expansionAnchors.get(letter);
+
+      if (primaryOpen && primaryId) return jumpToId(primaryId, instant);
+      if (expansionOpen && expansionId) return jumpToId(expansionId, instant);
+
+      if (primaryId) {
+        setPrimaryOpen(true);
+        setPendingJump({ id: primaryId, instant });
+      } else if (expansionId) {
+        setExpansionOpen(true);
+        setPendingJump({ id: expansionId, instant });
+      }
+    },
+    [primaryOpen, expansionOpen, primaryAnchors, expansionAnchors, jumpToId]
+  );
+
+  useEffect(() => {
+    if (!pendingJump) return;
+    jumpToId(pendingJump.id, pendingJump.instant);
+    setPendingJump(null);
+  }, [pendingJump, jumpToId]);
+
+  // Highlight whichever letter the reader has scrolled into.
+  useEffect(() => {
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      let current: string | null = null;
+      // Anchors are in document order: primary deck, then expansion.
+      for (const [letter, id] of [...primaryAnchors, ...expansionAnchors]) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 140) current = letter;
+      }
+      setActiveLetter(current);
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    // Capture phase: scroll events don't bubble, and the scroller is <body>.
+    window.addEventListener("scroll", onScroll, { passive: true, capture: true });
+    update();
+    return () => {
+      window.removeEventListener("scroll", onScroll, { capture: true });
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, [primaryAnchors, expansionAnchors, primaryOpen, expansionOpen]);
+
   return (
     <>
       <main className="grid gap-6 md:gap-8">
@@ -372,14 +477,24 @@ export default function BirdBingo() {
 
           {/* Bird grid renderer */}
           {(() => {
-            const renderGrid = (birdList: Bird[]) => (
+            const renderGrid = (birdList: Bird[], deck: string) => {
+              const anchored = new Set<string>();
+              return (
               <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                 {birdList.map((bird) => {
                   const imgSrc = getBirdImage(bird, sexFilter);
                   const isInfoActive = infoBird?.id === bird.id;
+
+                  // First card of each letter carries the index anchor. Anchoring
+                  // cards rather than inserting headers keeps the grid unbroken.
+                  const letter = bird.name[0].toUpperCase();
+                  const isAnchor = !anchored.has(letter);
+                  if (isAnchor) anchored.add(letter);
+
                   return (
                     <div
                       key={bird.id}
+                      id={isAnchor ? `bird-letter-${deck}-${letter}` : undefined}
                       data-bird-card-wrapper
                       style={{ visibility: isInfoActive ? "hidden" : "visible" }}
                     >
@@ -442,7 +557,8 @@ export default function BirdBingo() {
                   );
                 })}
               </div>
-            );
+              );
+            };
 
             return (
               <>
@@ -459,7 +575,7 @@ export default function BirdBingo() {
                       {primaryOpen ? "▲" : "▼"}
                     </span>
                   </button>
-                  {primaryOpen && renderGrid(primaryBirds)}
+                  {primaryOpen && renderGrid(primaryBirds, "primary")}
                 </div>
 
                 {/* Expansion accordion */}
@@ -475,7 +591,7 @@ export default function BirdBingo() {
                       {expansionOpen ? "▲" : "▼"}
                     </span>
                   </button>
-                  {expansionOpen && renderGrid(expansionBirds)}
+                  {expansionOpen && renderGrid(expansionBirds, "expansion")}
                 </div>
               </>
             );
@@ -484,6 +600,12 @@ export default function BirdBingo() {
           <audio ref={audioRef} />
         </section>
       </main>
+
+      <AlphabetIndex
+        letters={indexLetters}
+        activeLetter={activeLetter}
+        onSelect={handleLetterSelect}
+      />
 
       {/* Flying + flipping info card */}
       {infoBird && infoStyle && (

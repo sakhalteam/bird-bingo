@@ -16,3 +16,12 @@ An interactive bird bingo game with real bird calls from Sibley's guide. Tap a b
 - Accordion UI for detailed bird info
 - Filter by male/female birds, loop calls
 - Keyboard shortcuts
+- Alphabet index rail (`src/AlphabetIndex.tsx`) — iOS-style section index bar,
+  mobile only. Anchors the first card of each letter (`bird-letter-<deck>-<L>`)
+  instead of inserting section headers, so the grid stays unbroken on desktop.
+
+## Gotcha: the page scrolls inside `<body>`, not the window
+`html, body, #root { height: 100% }` plus `overflow-x: hidden` makes **body**
+the scroll container. So `window.scrollTo` / `window.scrollY` are no-ops, and
+scroll events never reach `window` (they don't bubble). Use `scrollIntoView`
+plus `scroll-margin-top`, and listen for scroll with `{ capture: true }`.
