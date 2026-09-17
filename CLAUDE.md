@@ -10,6 +10,21 @@ An interactive bird bingo game with real bird calls from Sibley's guide. Tap a b
 - `base: '/bird-bingo/'` in vite.config.ts
 - Deployed to sakhalteam.github.io/bird-bingo/
 
+## Icons
+
+`node scripts/make-icons.mjs` — a dependency-free PNG encoder (zlib + hand-rolled
+CRC) that draws a glowing bird mid-call: cyan body, violet wing, amber beak, two
+sound arcs. **Edit the script, never the PNGs.** The art is deliberately in the
+same idiom as the sibling apps (adhdo, traction) — adhdo's near-black `#0a0a1a`,
+soft-edged shapes, haloes falling off as the square of the distance — so the
+three read as a set on a home screen. The cyan/violet pair is this app's own,
+straight out of `.gradient-bg`. Everything is drawn inside the middle ~64% of
+the canvas so the same art is safe as a `maskable` icon.
+
+`index.html` also sets `apple-mobile-web-app-title` to "Bird Bingo" — without it
+iOS labels the home-screen tile from `<title>` and truncates it to
+"Bird Bingo – Sou…".
+
 ## Notable patterns
 - Sophisticated audio queueing system (voice intro → bird call)
 - 3D flip card animation on tap
