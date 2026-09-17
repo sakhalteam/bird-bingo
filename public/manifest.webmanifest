@@ -1,0 +1,19 @@
+{
+  "name": "Bird Bingo — Sounds",
+  "short_name": "Bird Bingo",
+  "description": "Tap a bird card to hear its call. Sibley Backyard Birding Bingo – interactive sounds edition.",
+  "id": "/bird-bingo/",
+  "start_url": "/bird-bingo/",
+  "scope": "/bird-bingo/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b0c10",
+  "theme_color": "#0b0c10",
+  "categories": ["education", "games", "entertainment"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

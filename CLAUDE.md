@@ -10,6 +10,30 @@ An interactive bird bingo game with real bird calls from Sibley's guide. Tap a b
 - `base: '/bird-bingo/'` in vite.config.ts
 - Deployed to sakhalteam.github.io/bird-bingo/
 
+## Installable PWA (2026-09-17)
+
+`public/manifest.webmanifest` (standalone, scoped to `/bird-bingo/`) plus the
+`apple-mobile-web-app-*` tags in `index.html`. No service worker — the deploy
+workflow is the only cache that matters here, and a worker would mostly buy
+staleness.
+
+⚠️ **Deliberately not full-bleed, unlike adhdo and traction.** Those use
+`apple-mobile-web-app-status-bar-style: black-translucent` + `viewport-fit=cover`
+and paint under the Dynamic Island. This app doesn't, for two reasons: every
+fixed edge would have to buy the safe areas back by hand (`.home-btn`,
+`.scroll-top-btn`, `.alpha-rail`, `.alpha-bubble`), and `<html>` here is
+`height: 100%` with **body** as the scroll container — the exact shape that
+walks into the WebKit bug adhdo hit, where a page that can't grow gets an
+initial containing block a status-bar shorter than the screen (see adhdo's
+CLAUDE.md). Letting iOS inset the web view costs the bleed under the clock and
+buys a viewport that cannot be wrong. Going full-bleed later means doing the
+safe-area padding *and* adopting adhdo's `100dvh` guard, not just flipping the
+meta tag.
+
+⚠️ **`theme-color` is declared twice, with `media`.** iOS tints the standalone
+status-bar band with it, and this app follows the system scheme — one dark value
+would put a near-black band above a near-white page in light mode.
+
 ## Icons
 
 `node scripts/make-icons.mjs` — a dependency-free PNG encoder (zlib + hand-rolled
